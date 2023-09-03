@@ -20,6 +20,7 @@ public class SecurityConfig {
 			authorize.anyRequest().authenticated();		
 		});
 		http.oauth2ResourceServer(t-> {
+			//t.jwt(Customizer.withDefaults());
 			t.opaqueToken(Customizer.withDefaults());
 		});
 		http.sessionManagement(
