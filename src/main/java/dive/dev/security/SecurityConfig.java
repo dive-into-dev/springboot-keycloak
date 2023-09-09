@@ -30,6 +30,7 @@ public class SecurityConfig {
 			authorize
 			.requestMatchers(HttpMethod.GET, "/restaurant/public/list").permitAll()
 			.requestMatchers(HttpMethod.GET, "/restaurant/public/menu/*").permitAll()
+			.requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
 			.anyRequest().authenticated();	
 		});
 		http.oauth2ResourceServer(t-> {

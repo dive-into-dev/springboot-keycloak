@@ -19,9 +19,11 @@ import dive.dev.entity.Restaurant;
 import dive.dev.repository.MenuItemRepository;
 import dive.dev.repository.MenuRepository;
 import dive.dev.repository.RestaurantRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RestController
 @RequestMapping("/restaurant")
+@SecurityRequirement(name = "Keycloak")
 public class RestaurantController {
 	
 	@Autowired
