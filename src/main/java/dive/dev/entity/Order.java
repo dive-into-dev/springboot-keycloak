@@ -1,8 +1,5 @@
 package dive.dev.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -12,8 +9,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "`order`")
 public class Order{
