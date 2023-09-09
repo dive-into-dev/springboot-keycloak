@@ -26,14 +26,14 @@ public class OrderController {
 	
 	@GetMapping
 	@RequestMapping("/{restaurantId}/list")
-	// manager can access
+	// manager can access (suresh)
 	public List<Order> getOrders(@PathVariable Long restaurantId) {
 		return orderRepository.findByRestaurantId(restaurantId);
     }
 	
 	@GetMapping
 	@RequestMapping("/{orderId}")
-	// manager can access
+	// manager can access (suresh)
 	public Order getOrderDetails(@PathVariable Long orderId) {
 		Order order = orderRepository.findById(orderId).get();
         order.setOrderItems(orderItemRepository.findByOrderId(order.getId()));

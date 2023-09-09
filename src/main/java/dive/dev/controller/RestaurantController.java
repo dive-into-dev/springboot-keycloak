@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,14 +50,16 @@ public class RestaurantController {
     }
 	
 	@PostMapping
-	// admin can access
+	// admin can access (admin)
+	@PreAuthorize("hasRole('admin')")
 	public Restaurant createRestaurant(Restaurant restaurant) {
         return restaurantRepository.save(restaurant);
     }
 	
 	@PostMapping
 	@RequestMapping("/menu")
-	// manager can access
+	// manager can access (suresh)
+	@PreAuthorize("hasRole('manager')")
 	public Menu createMenu(Menu menu) {
 		menuRepository.save(menu);
         menu.getMenuItems().forEach(menuItem -> {
@@ -68,7 +71,8 @@ public class RestaurantController {
 	
 	@PutMapping
 	@RequestMapping("/menu/item/{itemId}/{price}")
-	// owner can access
+	// owner can access (amar)
+	@PreAuthorize("hasRole('owner')")
 	public MenuItem updateMenuItemPrice(@PathVariable Long itemId
             , @PathVariable BigDecimal price) {
         Optional<MenuItem> menuItem = menuItemRepository.findById(itemId);
